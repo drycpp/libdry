@@ -1,0 +1,15 @@
+/* This is free and unencumbered software released into the public domain. */
+
+#ifndef DRY_VERSION_H
+#define DRY_VERSION_H
+
+/**
+ * @file
+ */
+
+#define DRY_VERSION_STRING "@PACKAGE_VERSION@"
+#define DRY_VERSION_MAJOR  @PACKAGE_VERSION_MAJOR@
+#define DRY_VERSION_MINOR  @PACKAGE_VERSION_MINOR@
+#define DRY_VERSION_PATCH  @PACKAGE_VERSION_PATCH@
+
+#endif /* DRY_VERSION_H */
