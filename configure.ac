@@ -34,7 +34,7 @@ dnl Check for programs:
 AC_PROG_CXX(clang++ g++ c++)
 AC_PROG_CXXCPP
 AC_LANG([C++])
-dnl AX_CXX_COMPILE_STDCXX_11([noext])
+AX_CXX_COMPILE_STDCXX_11([noext])
 
 dnl Check for configuration options:
 # --with-stdlib=libstdc++|libc++
