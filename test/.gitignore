@@ -7,3 +7,4 @@
 *.lo
 *.log
 *.trs
+check-semaphore
