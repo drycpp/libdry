@@ -7,5 +7,6 @@
 *.lo
 *.log
 *.trs
+check-bitops
 check-bitset
 check-semaphore
