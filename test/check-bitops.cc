@@ -10,6 +10,15 @@
 
 using namespace dry;
 
+TEST_CASE("ffs64()") {
+  REQUIRE(ffs64(0b0) == 0);
+  REQUIRE(ffs64(0b1) == 1);
+  REQUIRE(ffs64(0b10) == 2);
+  REQUIRE(ffs64(0b100) == 3);
+  REQUIRE(ffs64(1ULL<<63) == 64);
+  REQUIRE(ffs64(~0ULL) == 1);
+}
+
 TEST_CASE("popcount64()") {
   REQUIRE(popcount64(0b0) == 0);
   REQUIRE(popcount64(0b1) == 1);
