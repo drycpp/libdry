@@ -36,6 +36,7 @@ public:
   using word_type = Word;
 
   static constexpr size_type npos = static_cast<size_type>(-1);
+
   static constexpr size_type word_size = sizeof(word_type) * 8;
 
   /**
@@ -80,5 +81,13 @@ public:
     return static_cast<const Derived&>(*this).size();
   }
 };
+
+namespace dry {
+  template <class Derived, typename Word>
+  constexpr std::size_t bitset<Derived, Word>::npos;
+
+  template <class Derived, typename Word>
+  constexpr std::size_t bitset<Derived, Word>::word_size;
+}
 
 #endif /* DRY_BITSET_H */
