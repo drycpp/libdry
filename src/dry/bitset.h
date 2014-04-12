@@ -88,6 +88,11 @@ public:
   inline size_type count(bool value = true) const noexcept;
 
   /**
+   * Checks whether all bits are set in this bitset.
+   */
+  inline bool all() const noexcept;
+
+  /**
    * Checks whether any bits are set in this bitset.
    */
   inline bool any() const noexcept;

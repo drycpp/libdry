@@ -103,6 +103,14 @@ public:
   }
 
   /**
+   * @copydoc bitset::all()
+   */
+  inline bool all() const noexcept {
+    return size() && std::all_of(_data.begin() + 1, _data.end(),
+      [](const entry_type entry){ return entry != 0; });
+  }
+
+  /**
    * @copydoc bitset::any()
    */
   inline bool any() const noexcept {

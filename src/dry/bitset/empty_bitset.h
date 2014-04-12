@@ -63,6 +63,13 @@ public:
   }
 
   /**
+   * @copydoc bitset::all()
+   */
+  inline bool all() const noexcept {
+    return false;
+  }
+
+  /**
    * @copydoc bitset::any()
    */
   inline bool any() const noexcept {

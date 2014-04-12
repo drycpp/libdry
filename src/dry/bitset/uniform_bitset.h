@@ -79,6 +79,13 @@ public:
   }
 
   /**
+   * @copydoc bitset::all()
+   */
+  inline bool all() const noexcept {
+    return _value;
+  }
+
+  /**
    * @copydoc bitset::any()
    */
   inline bool any() const noexcept {
