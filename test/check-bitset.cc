@@ -7,17 +7,21 @@
 #include "catch.hpp"
 
 #include <dry/bitset.h>
+#include <dry/bitset/empty_bitset.h>
 
 using namespace dry;
 
-namespace {
-  class dynamic_bitset : public dry::bitset<dynamic_bitset, std::uint64_t> {};
-}
-
 TEST_CASE("bitset::npos") {
-  REQUIRE(dynamic_bitset::npos > 0);
+  REQUIRE(empty_bitset::npos > 0);
 }
 
 TEST_CASE("bitset::word_size") {
-  REQUIRE(dynamic_bitset::word_size > 0);
+  REQUIRE(empty_bitset::word_size > 0);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/* dry::empty_bitset */
+
+TEST_CASE("empty_bitset#size") {
+  REQUIRE(empty_bitset{}.size() == 0);
 }

@@ -4,5 +4,6 @@ base_pkgincludedir = $(pkgincludedir)
 base_pkginclude_HEADERS = \
   bitops.h                \
   bitset.h                \
+  bitset/empty_bitset.h   \
   semaphore.h             \
   version.h

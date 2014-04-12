@@ -23,7 +23,7 @@ namespace dry {
  * @abstract
  * @see http://en.wikipedia.org/wiki/Bit_array
  */
-template <class Derived, typename Word>
+template <class Derived, typename Word = std::uint64_t>
 class dry::bitset {
 protected:
   /**
