@@ -58,7 +58,7 @@ public:
   uniform_bitset& operator=(uniform_bitset&& other) noexcept = default;
 
   /**
-   * Returns the number of bits in this bitset.
+   * @copydoc bitset::size()
    */
   inline size_type size() const noexcept {
     return _size;

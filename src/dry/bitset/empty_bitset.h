@@ -49,7 +49,7 @@ public:
   empty_bitset& operator=(empty_bitset&& other) noexcept = default;
 
   /**
-   * Returns the number of bits in this bitset.
+   * @copydoc bitset::size()
    */
   inline size_type size() const noexcept {
     return 0;
