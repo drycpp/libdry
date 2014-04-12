@@ -58,6 +58,13 @@ public:
   uniform_bitset& operator=(uniform_bitset&& other) noexcept = default;
 
   /**
+   * Returns the current value of this bitset.
+   */
+  inline bool value() const noexcept {
+    return _value;
+  }
+
+  /**
    * @copydoc bitset::size()
    */
   inline std::size_t size() const noexcept {

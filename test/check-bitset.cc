@@ -61,4 +61,6 @@ TEST_CASE("uniform_bitset#size") {
 
 TEST_CASE("uniform_bitset#flip") {
   REQUIRE_NOTHROW(uniform_bitset{}.flip());
+  REQUIRE(uniform_bitset{}.value() == false);
+  REQUIRE(uniform_bitset{}.flip().value() == true);
 }
