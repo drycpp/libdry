@@ -113,6 +113,16 @@ public:
   inline bool operator[](size_type pos) const;
 
   /**
+   * Sets all bits in this bitset.
+   */
+  bitset& set();
+
+  /**
+   * Clears all bits in this bitset.
+   */
+  bitset& reset();
+
+  /**
    * Inverts all bits in this bitset.
    */
   bitset& flip() noexcept;

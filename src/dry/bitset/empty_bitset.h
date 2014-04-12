@@ -101,9 +101,26 @@ public:
   }
 
   /**
+   * @copydoc bitset::set()
+   */
+  empty_bitset& set() noexcept {
+    /* nothing to do */
+    return *this;
+  }
+
+  /**
+   * @copydoc bitset::reset()
+   */
+  empty_bitset& reset() noexcept {
+    /* nothing to do */
+    return *this;
+  }
+
+  /**
    * @copydoc bitset::flip()
    */
   empty_bitset& flip() noexcept {
+    /* nothing to do */
     return *this;
   }
 };

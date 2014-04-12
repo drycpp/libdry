@@ -117,6 +117,22 @@ public:
   }
 
   /**
+   * @copydoc bitset::set()
+   */
+  uniform_bitset& set() noexcept {
+    _value = true;
+    return *this;
+  }
+
+  /**
+   * @copydoc bitset::reset()
+   */
+  uniform_bitset& reset() noexcept {
+    _value = false;
+    return *this;
+  }
+
+  /**
    * @copydoc bitset::flip()
    */
   uniform_bitset& flip() noexcept {

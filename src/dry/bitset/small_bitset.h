@@ -153,6 +153,29 @@ public:
   }
 
   /**
+   * @copydoc bitset::set()
+   */
+  small_bitset& set() {
+    if (size() >= N) {
+      throw std::domain_error{"cannot set() all bits when size() >= N"};
+    }
+    for (auto pos = 1U; pos <= std::min(size(), N - 1); pos++) {
+      _data[pos] = pos - 1;
+    }
+    return *this;
+  }
+
+  /**
+   * @copydoc bitset::reset()
+   */
+  small_bitset& reset() noexcept {
+    if (size()) {
+      std::fill_n(_data.begin() + 1, N - 1, npos);
+    }
+    return *this;
+  }
+
+  /**
    * @copydoc bitset::flip()
    */
   small_bitset& flip() noexcept; /* not supported */
