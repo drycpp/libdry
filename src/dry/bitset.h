@@ -118,9 +118,19 @@ public:
   bitset& set();
 
   /**
+   * Sets a given bit in this bitset.
+   */
+  bitset& set(size_type pos, bool value = true);
+
+  /**
    * Clears all bits in this bitset.
    */
   bitset& reset();
+
+  /**
+   * Clears a given bit in this bitset.
+   */
+  bitset& reset(size_type pos);
 
   /**
    * Inverts all bits in this bitset.

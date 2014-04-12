@@ -125,11 +125,31 @@ public:
   }
 
   /**
+   * @copydoc bitset::set(std::size_t,bool)
+   */
+  uniform_bitset& set(std::size_t pos, bool value = true) {
+    if (pos >= size()) {
+      throw std::out_of_range{"pos >= size()"};
+    }
+    if (value != _value) {
+      throw std::logic_error{"cannot set() bits to non-uniform values"};
+    }
+    return *this;
+  }
+
+  /**
    * @copydoc bitset::reset()
    */
   uniform_bitset& reset() noexcept {
     _value = false;
     return *this;
+  }
+
+  /**
+   * @copydoc bitset::reset(std::size_t)
+   */
+  uniform_bitset& reset(std::size_t pos) {
+    return set(pos, false);
   }
 
   /**

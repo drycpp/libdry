@@ -58,8 +58,16 @@ TEST_CASE("empty_bitset#set") {
   REQUIRE_NOTHROW(empty_bitset{}.set());
 }
 
+TEST_CASE("empty_bitset#set(pos)") {
+  REQUIRE_THROWS_AS(empty_bitset{}.set(0), std::out_of_range);
+}
+
 TEST_CASE("empty_bitset#reset") {
   REQUIRE_NOTHROW(empty_bitset{}.reset());
+}
+
+TEST_CASE("empty_bitset#reset(pos)") {
+  REQUIRE_THROWS_AS(empty_bitset{}.reset(0), std::out_of_range);
 }
 
 TEST_CASE("empty_bitset#flip") {
@@ -88,25 +96,33 @@ TEST_CASE("small_bitset#count") {
 TEST_CASE("small_bitset#all") {
   REQUIRE(small_bitset{}.all() == false);
   REQUIRE(small_bitset{1}.all() == false);
-  // TODO: REQUIRE(small_bitset{1}.set(0).all() == true);
+  REQUIRE(small_bitset{1}.set(0).all() == true);
+  REQUIRE(small_bitset{2}.set(0).all() == false);
+  REQUIRE(small_bitset{2}.set(1).all() == false);
 }
 
 TEST_CASE("small_bitset#any") {
   REQUIRE(small_bitset{}.any() == false);
   REQUIRE(small_bitset{1}.any() == false);
-  // TODO: REQUIRE(small_bitset{1}.set(0).any() == true);
+  REQUIRE(small_bitset{1}.set(0).any() == true);
+  REQUIRE(small_bitset{2}.set(0).any() == true);
+  REQUIRE(small_bitset{2}.set(1).any() == true);
 }
 
 TEST_CASE("small_bitset#none") {
   REQUIRE(small_bitset{}.none() == true);
   REQUIRE(small_bitset{1}.none() == true);
-  // TODO: REQUIRE(small_bitset{1}.set(0).none() == false);
+  REQUIRE(small_bitset{1}.set(0).none() == false);
+  REQUIRE(small_bitset{2}.set(0).none() == false);
+  REQUIRE(small_bitset{2}.set(1).none() == false);
 }
 
 TEST_CASE("small_bitset#test") {
   REQUIRE_THROWS_AS(small_bitset{}.test(0), std::out_of_range);
   REQUIRE(small_bitset{1}.test(0) == false);
-  // TODO: REQUIRE(small_bitset{1}.set(0).test(0) == true);
+  REQUIRE(small_bitset{1}.set(0).test(0) == true);
+  REQUIRE(small_bitset{2}.set(0).test(0) == true);
+  REQUIRE(small_bitset{2}.set(1).test(1) == true);
 }
 
 TEST_CASE("small_bitset#set") {
@@ -120,6 +136,11 @@ TEST_CASE("small_bitset#set") {
   REQUIRE_THROWS_AS(small_bitset{16}.set(), std::domain_error);
 }
 
+TEST_CASE("small_bitset#set(pos)") {
+  REQUIRE_THROWS_AS(small_bitset{}.set(0), std::out_of_range);
+  REQUIRE(small_bitset{1}.reset().set(0).test(0) == true);
+}
+
 TEST_CASE("small_bitset#reset") {
   for (auto size = 0U; size < 16; size++) {
     small_bitset bits{size};
@@ -129,6 +150,13 @@ TEST_CASE("small_bitset#reset") {
     }
   }
   REQUIRE_NOTHROW(small_bitset{16}.reset());
+}
+
+TEST_CASE("small_bitset#reset(pos)") {
+  REQUIRE_THROWS_AS(small_bitset{}.reset(0), std::out_of_range);
+  REQUIRE(small_bitset{1}.set().reset(0).test(0) == false);
+  REQUIRE(small_bitset{2}.set().reset(0).test(1) == true);
+  REQUIRE(small_bitset{3}.set().reset(0).count() == 2);
 }
 
 TEST_CASE("small_bitset#flip") {} /* not supported */
@@ -177,8 +205,20 @@ TEST_CASE("uniform_bitset#set") {
   REQUIRE(uniform_bitset{}.set().value() == true);
 }
 
+TEST_CASE("uniform_bitset#set(pos)") {
+  REQUIRE_THROWS_AS(uniform_bitset{}.set(0), std::out_of_range);
+  REQUIRE_THROWS_AS(uniform_bitset(1, false).set(0), std::logic_error);
+  REQUIRE_NOTHROW(uniform_bitset(1, true).set(0));
+}
+
 TEST_CASE("uniform_bitset#reset") {
   REQUIRE(uniform_bitset{}.reset().value() == false);
+}
+
+TEST_CASE("uniform_bitset#reset(pos)") {
+  REQUIRE_THROWS_AS(uniform_bitset{}.reset(0), std::out_of_range);
+  REQUIRE_THROWS_AS(uniform_bitset(1, true).reset(0), std::logic_error);
+  REQUIRE_NOTHROW(uniform_bitset(1, false).reset(0));
 }
 
 TEST_CASE("uniform_bitset#flip") {

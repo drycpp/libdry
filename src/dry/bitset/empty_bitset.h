@@ -87,10 +87,8 @@ public:
    * @copydoc bitset::test()
    */
   bool test(std::size_t pos) const {
-    if (pos >= size()) {
-      throw std::out_of_range{"pos >= size()"};
-    }
-    return false;
+    throw std::out_of_range{"pos >= size()"};
+    return (void)pos, false;
   }
 
   /**
@@ -109,11 +107,26 @@ public:
   }
 
   /**
+   * @copydoc bitset::set(std::size_t,bool)
+   */
+  empty_bitset& set(std::size_t pos, bool value = true) {
+    throw std::out_of_range{"pos >= size()"};
+    return (void)pos, (void)value, *this;
+  }
+
+  /**
    * @copydoc bitset::reset()
    */
   empty_bitset& reset() noexcept {
     /* nothing to do */
     return *this;
+  }
+
+  /**
+   * @copydoc bitset::reset(std::size_t)
+   */
+  empty_bitset& reset(std::size_t pos) {
+    return set(pos, false);
   }
 
   /**

@@ -166,6 +166,31 @@ public:
   }
 
   /**
+   * @copydoc bitset::set(std::size_t,bool)
+   */
+  small_bitset& set(std::size_t pos, bool value = true) {
+    if (pos >= size()) {
+      throw std::out_of_range{"pos >= size()"};
+    }
+    const auto begin = _data.begin() + 1;
+    const auto end = begin + std::min(size(), N - 1);
+    auto it = std::find(begin, end, pos);
+    if (it != end) {
+      if (!value) {
+        std::fill(std::remove(it, end, pos), end, npos);
+      }
+    }
+    else if (value) {
+      it = std::find(begin, end, npos);
+      if (it == end) {
+        throw std::overflow_error{"cannot set() more bits"};
+      }
+      *it = pos;
+    }
+    return *this;
+  }
+
+  /**
    * @copydoc bitset::reset()
    */
   small_bitset& reset() noexcept {
@@ -173,6 +198,13 @@ public:
       std::fill_n(_data.begin() + 1, N - 1, npos);
     }
     return *this;
+  }
+
+  /**
+   * @copydoc bitset::reset(std::size_t)
+   */
+  small_bitset& reset(std::size_t pos) {
+    return set(pos, false);
   }
 
   /**
