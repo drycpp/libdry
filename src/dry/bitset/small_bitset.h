@@ -9,7 +9,8 @@
 
 #include "../bitset.h"
 
-#include <array> /* for std::array */
+#include <array>  /* for std::array */
+#include <limits> /* for std::numeric_limits */
 
 namespace dry {
   template <std::size_t N>
@@ -17,20 +18,31 @@ namespace dry {
 }
 
 /**
- * A small bitset, capable of storing a maximum of N entries.
+ * A small bitset, capable of storing a maximum of N-1 entries.
  *
  * The default capacity (N = 16) is designed to correspond to the size of a
  * single L1 cache line on the x86/x86-64 architecture.
  */
 template <std::size_t N = 16>
 class dry::small_bitset : public dry::bitset<small_bitset<N>> {
-  std::array<std::uint32_t, N> _data;
+  using entry_type = std::uint32_t;
+  std::array<entry_type, N> _data {{0}};
 
 public:
   /**
    * Default constructor.
    */
   small_bitset() noexcept = default;
+
+  /**
+   * Constructor.
+   */
+  small_bitset(std::size_t size) {
+    if (size > std::numeric_limits<entry_type>::max()) {
+      throw std::out_of_range{"size too large"};
+    }
+    _data[0] = size;
+  }
 
   /**
    * Copy constructor.
@@ -60,14 +72,14 @@ public:
   /**
    * Returns a reference to the internal data array.
    */
-  inline std::array<std::uint32_t, N>& data() noexcept {
+  inline std::array<entry_type, N>& data() noexcept {
     return _data;
   }
 
   /**
    * Returns a const reference to the internal data array.
    */
-  inline const std::array<std::uint32_t, N>& data() const noexcept {
+  inline const std::array<entry_type, N>& data() const noexcept {
     return _data;
   }
 
@@ -75,7 +87,7 @@ public:
    * @copydoc bitset::size()
    */
   inline std::size_t size() const noexcept {
-    return 0; // TODO
+    return _data[0];
   }
 
   /**

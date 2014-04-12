@@ -10,6 +10,7 @@
 #include <cassert>     /* for assert() */
 #include <cstddef>     /* for std::size_t */
 #include <cstdint>     /* for std::uint64_t */
+#include <stdexcept>   /* for std::out_of_range */
 #include <type_traits> /* for std::is_same<> */
 
 namespace dry {

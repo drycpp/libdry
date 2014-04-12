@@ -44,10 +44,15 @@ using small_bitset = dry::small_bitset<16>;
 
 TEST_CASE("small_bitset#size") {
   REQUIRE(small_bitset{}.size() == 0);
+  REQUIRE(small_bitset{1}.size() == 1);
+  REQUIRE(small_bitset{100}.size() == 100);
+  REQUIRE_THROWS_AS(small_bitset{1ULL<<33}.size(), std::out_of_range);
 }
 
 TEST_CASE("small_bitset#flip") {
   REQUIRE_NOTHROW(small_bitset{}.flip());
+  //REQUIRE(small_bitset{}.data()[0] == static_cast<std::uint32_t>(-1));
+  //REQUIRE(small_bitset{}.flip().data()[0] == 0);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
