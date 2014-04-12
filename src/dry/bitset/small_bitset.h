@@ -9,8 +9,9 @@
 
 #include "../bitset.h"
 
-#include <array>  /* for std::array */
-#include <limits> /* for std::numeric_limits */
+#include <algorithm> /* for std::fill_n(), std::min() */
+#include <array>     /* for std::array */
+#include <limits>    /* for std::numeric_limits */
 
 namespace dry {
   template <std::size_t N>
@@ -18,7 +19,7 @@ namespace dry {
 }
 
 /**
- * A small bitset, capable of storing a maximum of N-1 entries.
+ * A small bitset, capable of storing a maximum of N-1 set bits.
  *
  * The default capacity (N = 16) is designed to correspond to the size of a
  * single L1 cache line on the x86/x86-64 architecture.
@@ -42,6 +43,7 @@ public:
       throw std::out_of_range{"size too large"};
     }
     _data[0] = size;
+    std::fill_n(_data.begin() + 1, N - 1, 0);
   }
 
   /**
@@ -93,10 +95,7 @@ public:
   /**
    * @copydoc bitset::flip()
    */
-  small_bitset& flip() noexcept {
-    // TODO
-    return *this;
-  }
+  small_bitset& flip() noexcept; /* not supported */
 };
 
 #endif /* DRY_SMALL_BITSET_H */

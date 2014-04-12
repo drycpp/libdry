@@ -49,11 +49,7 @@ TEST_CASE("small_bitset#size") {
   REQUIRE_THROWS_AS(small_bitset{1ULL<<33}.size(), std::out_of_range);
 }
 
-TEST_CASE("small_bitset#flip") {
-  REQUIRE_NOTHROW(small_bitset{}.flip());
-  //REQUIRE(small_bitset{}.data()[0] == static_cast<std::uint32_t>(-1));
-  //REQUIRE(small_bitset{}.flip().data()[0] == 0);
-}
+TEST_CASE("small_bitset#flip") {} /* not supported */
 
 ////////////////////////////////////////////////////////////////////////////////
 /* dry::uniform_bitset */
