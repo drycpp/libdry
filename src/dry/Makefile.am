@@ -5,5 +5,6 @@ base_pkginclude_HEADERS = \
   bitops.h                \
   bitset.h                \
   bitset/empty_bitset.h   \
+  bitset/uniform_bitset.h \
   semaphore.h             \
   version.h

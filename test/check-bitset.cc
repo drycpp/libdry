@@ -8,6 +8,7 @@
 
 #include <dry/bitset.h>
 #include <dry/bitset/empty_bitset.h>
+#include <dry/bitset/uniform_bitset.h>
 
 using namespace dry;
 
@@ -24,4 +25,11 @@ TEST_CASE("bitset::word_size") {
 
 TEST_CASE("empty_bitset#size") {
   REQUIRE(empty_bitset{}.size() == 0);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/* dry::uniform_bitset */
+
+TEST_CASE("uniform_bitset#size") {
+  REQUIRE(uniform_bitset{}.size() == 0);
 }
