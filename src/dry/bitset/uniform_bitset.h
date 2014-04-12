@@ -60,7 +60,7 @@ public:
   /**
    * @copydoc bitset::size()
    */
-  inline size_type size() const noexcept {
+  inline std::size_t size() const noexcept {
     return _size;
   }
 
