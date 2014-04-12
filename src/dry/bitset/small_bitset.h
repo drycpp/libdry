@@ -58,6 +58,20 @@ public:
   small_bitset& operator=(small_bitset&& other) noexcept = default;
 
   /**
+   * Returns a reference to the internal data array.
+   */
+  inline std::array<std::uint32_t, N>& data() noexcept {
+    return _data;
+  }
+
+  /**
+   * Returns a const reference to the internal data array.
+   */
+  inline const std::array<std::uint32_t, N>& data() const noexcept {
+    return _data;
+  }
+
+  /**
    * @copydoc bitset::size()
    */
   inline std::size_t size() const noexcept {
