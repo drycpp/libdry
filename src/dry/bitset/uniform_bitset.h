@@ -72,6 +72,13 @@ public:
   }
 
   /**
+   * @copydoc bitset::count()
+   */
+  inline std::size_t count(bool value = true) const noexcept {
+    return (value == _value) ? size() : 0;
+  }
+
+  /**
    * @copydoc bitset::flip()
    */
   uniform_bitset& flip() noexcept {

@@ -83,6 +83,11 @@ public:
   }
 
   /**
+   * Returns the number of set bits in this bitset.
+   */
+  inline size_type count(bool value = true) const noexcept;
+
+  /**
    * Inverts all bits in this bitset.
    */
   bitset& flip() noexcept;

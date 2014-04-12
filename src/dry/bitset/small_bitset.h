@@ -9,7 +9,7 @@
 
 #include "../bitset.h"
 
-#include <algorithm> /* for std::fill_n(), std::min() */
+#include <algorithm> /* for std::count_if(), std::fill_n(), std::min() */
 #include <array>     /* for std::array */
 #include <limits>    /* for std::numeric_limits */
 
@@ -90,6 +90,16 @@ public:
    */
   inline std::size_t size() const noexcept {
     return _data[0];
+  }
+
+  /**
+   * @copydoc bitset::count()
+   */
+  inline std::size_t count(bool value = true) const noexcept {
+    if (!size()) return 0;
+    const auto count = std::count_if(_data.begin() + 1, _data.end(),
+      [](const entry_type entry){ return entry != 0; });
+    return value ? count : size() - count;
   }
 
   /**

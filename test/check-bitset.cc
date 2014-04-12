@@ -33,6 +33,11 @@ TEST_CASE("empty_bitset#size") {
   REQUIRE(empty_bitset{}.size() == 0);
 }
 
+TEST_CASE("empty_bitset#count") {
+  REQUIRE(empty_bitset{}.count(true) == 0);
+  REQUIRE(empty_bitset{}.count(false) == 0);
+}
+
 TEST_CASE("empty_bitset#flip") {
   REQUIRE_NOTHROW(empty_bitset{}.flip());
 }
@@ -49,6 +54,13 @@ TEST_CASE("small_bitset#size") {
   REQUIRE_THROWS_AS(small_bitset{1ULL<<33}.size(), std::out_of_range);
 }
 
+TEST_CASE("small_bitset#count") {
+  REQUIRE(small_bitset{}.count(true) == 0);
+  REQUIRE(small_bitset{}.count(false) == 0);
+  REQUIRE(small_bitset{1}.count(true) == 0);
+  REQUIRE(small_bitset{1}.count(false) == 1);
+}
+
 TEST_CASE("small_bitset#flip") {} /* not supported */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -58,6 +70,13 @@ using uniform_bitset = dry::uniform_bitset;
 
 TEST_CASE("uniform_bitset#size") {
   REQUIRE(uniform_bitset{}.size() == 0);
+}
+
+TEST_CASE("uniform_bitset#count") {
+  REQUIRE(uniform_bitset{}.count(true) == 0);
+  REQUIRE(uniform_bitset{}.count(false) == 0);
+  REQUIRE(uniform_bitset{1}.count(true) == 0);
+  REQUIRE(uniform_bitset{1}.count(false) == 1);
 }
 
 TEST_CASE("uniform_bitset#flip") {
