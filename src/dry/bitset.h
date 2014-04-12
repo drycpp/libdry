@@ -68,14 +68,14 @@ public:
   /**
    * Checks whether this bitset is empty.
    */
-  inline bool empty() const noexcept {
+  bool empty() const noexcept {
     return size() == 0;
   }
 
   /**
    * Returns the number of bits in this bitset.
    */
-  inline size_type size() const noexcept {
+  size_type size() const noexcept {
     static_assert(!std::is_same<decltype(&Derived::size),
       decltype(&bitset<Derived, Word>::size)>::value,
       "unimplemented static polymorphic method 'size' in derived class");
@@ -85,32 +85,32 @@ public:
   /**
    * Returns the number of set bits in this bitset.
    */
-  inline size_type count(bool value = true) const noexcept;
+  size_type count(bool value = true) const noexcept;
 
   /**
    * Checks whether all bits are set in this bitset.
    */
-  inline bool all() const noexcept;
+  bool all() const noexcept;
 
   /**
    * Checks whether any bits are set in this bitset.
    */
-  inline bool any() const noexcept;
+  bool any() const noexcept;
 
   /**
    * Checks whether all bits are unset in this bitset.
    */
-  inline bool none() const noexcept;
+  bool none() const noexcept;
 
   /**
    * Checks whether a given bit is set in this bitset.
    */
-  inline bool test(size_type pos) const;
+  bool test(size_type pos) const;
 
   /**
    * Checks whether a given bit is set in this bitset.
    */
-  inline bool operator[](size_type pos) const;
+  bool operator[](size_type pos) const;
 
   /**
    * Sets all bits in this bitset.

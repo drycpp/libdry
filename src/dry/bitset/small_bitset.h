@@ -76,28 +76,28 @@ public:
   /**
    * Returns a reference to the internal data array.
    */
-  inline std::array<entry_type, N>& data() noexcept {
+  std::array<entry_type, N>& data() noexcept {
     return _data;
   }
 
   /**
    * Returns a const reference to the internal data array.
    */
-  inline const std::array<entry_type, N>& data() const noexcept {
+  const std::array<entry_type, N>& data() const noexcept {
     return _data;
   }
 
   /**
    * @copydoc bitset::size()
    */
-  inline std::size_t size() const noexcept {
+  std::size_t size() const noexcept {
     return _data[0];
   }
 
   /**
    * @copydoc bitset::count()
    */
-  inline std::size_t count(bool value = true) const noexcept {
+  std::size_t count(bool value = true) const noexcept {
     if (!size()) return 0;
     const auto begin = _data.begin() + 1;
     const auto end = begin + std::min(size(), N - 1);
@@ -109,14 +109,14 @@ public:
   /**
    * @copydoc bitset::all()
    */
-  inline bool all() const noexcept {
+  bool all() const noexcept {
     return size() && size() < N && size() == count();
   }
 
   /**
    * @copydoc bitset::any()
    */
-  inline bool any() const noexcept {
+  bool any() const noexcept {
     const auto begin = _data.begin() + 1;
     const auto end = begin + std::min(size(), N - 1);
     return size() && std::any_of(begin, end,
@@ -126,7 +126,7 @@ public:
   /**
    * @copydoc bitset::none()
    */
-  inline bool none() const noexcept {
+  bool none() const noexcept {
     const auto begin = _data.begin() + 1;
     const auto end = begin + std::min(size(), N - 1);
     return !size() || std::none_of(begin, end,
@@ -136,7 +136,7 @@ public:
   /**
    * @copydoc bitset::test()
    */
-  inline bool test(std::size_t pos) const {
+  bool test(std::size_t pos) const {
     if (pos >= size()) {
       throw std::out_of_range{"pos >= size()"};
     }
@@ -146,7 +146,7 @@ public:
   /**
    * @copydoc bitset::operator[]()
    */
-  inline bool operator[](std::size_t pos) const noexcept {
+  bool operator[](std::size_t pos) const noexcept {
     const auto begin = _data.begin() + 1;
     const auto end = begin + std::min(size(), N - 1);
     return size() && std::find(begin, end, pos) != end;

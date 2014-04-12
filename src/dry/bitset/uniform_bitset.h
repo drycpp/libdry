@@ -60,49 +60,49 @@ public:
   /**
    * Returns the current value of this bitset.
    */
-  inline bool value() const noexcept {
+  bool value() const noexcept {
     return _value;
   }
 
   /**
    * @copydoc bitset::size()
    */
-  inline std::size_t size() const noexcept {
+  std::size_t size() const noexcept {
     return _size;
   }
 
   /**
    * @copydoc bitset::count()
    */
-  inline std::size_t count(bool value = true) const noexcept {
+  std::size_t count(bool value = true) const noexcept {
     return (value == _value) ? size() : 0;
   }
 
   /**
    * @copydoc bitset::all()
    */
-  inline bool all() const noexcept {
+  bool all() const noexcept {
     return _value;
   }
 
   /**
    * @copydoc bitset::any()
    */
-  inline bool any() const noexcept {
+  bool any() const noexcept {
     return _value;
   }
 
   /**
    * @copydoc bitset::none()
    */
-  inline bool none() const noexcept {
+  bool none() const noexcept {
     return !_value;
   }
 
   /**
    * @copydoc bitset::test()
    */
-  inline bool test(std::size_t pos) const {
+  bool test(std::size_t pos) const {
     if (pos >= size()) {
       throw std::out_of_range{"pos >= size()"};
     }
@@ -112,7 +112,7 @@ public:
   /**
    * @copydoc bitset::operator[]()
    */
-  inline bool operator[](std::size_t pos) const noexcept {
+  bool operator[](std::size_t pos) const noexcept {
     return pos < size() ? _value : false;
   }
 
