@@ -100,6 +100,16 @@ public:
   }
 
   /**
+   * @copydoc bitset::test()
+   */
+  inline bool test(std::size_t pos) const {
+    if (pos >= size()) {
+      throw std::out_of_range{"pos >= size()"};
+    }
+    return _value;
+  }
+
+  /**
    * @copydoc bitset::flip()
    */
   uniform_bitset& flip() noexcept {

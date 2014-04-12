@@ -103,6 +103,11 @@ public:
   inline bool none() const noexcept;
 
   /**
+   * Checks whether a given bit is set in this bitset.
+   */
+  inline bool test(size_type pos) const;
+
+  /**
    * Inverts all bits in this bitset.
    */
   bitset& flip() noexcept;
