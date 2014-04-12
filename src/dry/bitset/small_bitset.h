@@ -103,6 +103,22 @@ public:
   }
 
   /**
+   * @copydoc bitset::any()
+   */
+  inline bool any() const noexcept {
+    return size() && std::any_of(_data.begin() + 1, _data.end(),
+      [](const entry_type entry){ return entry != 0; });
+  }
+
+  /**
+   * @copydoc bitset::none()
+   */
+  inline bool none() const noexcept {
+    return !size() || std::none_of(_data.begin() + 1, _data.end(),
+      [](const entry_type entry){ return entry != 0; });
+  }
+
+  /**
    * @copydoc bitset::flip()
    */
   small_bitset& flip() noexcept; /* not supported */

@@ -79,6 +79,20 @@ public:
   }
 
   /**
+   * @copydoc bitset::any()
+   */
+  inline bool any() const noexcept {
+    return _value;
+  }
+
+  /**
+   * @copydoc bitset::none()
+   */
+  inline bool none() const noexcept {
+    return !_value;
+  }
+
+  /**
    * @copydoc bitset::flip()
    */
   uniform_bitset& flip() noexcept {

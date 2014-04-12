@@ -63,6 +63,20 @@ public:
   }
 
   /**
+   * @copydoc bitset::any()
+   */
+  inline bool any() const noexcept {
+    return false;
+  }
+
+  /**
+   * @copydoc bitset::none()
+   */
+  inline bool none() const noexcept {
+    return true;
+  }
+
+  /**
    * @copydoc bitset::flip()
    */
   empty_bitset& flip() noexcept {

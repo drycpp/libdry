@@ -88,6 +88,16 @@ public:
   inline size_type count(bool value = true) const noexcept;
 
   /**
+   * Checks whether any bits are set in this bitset.
+   */
+  inline bool any() const noexcept;
+
+  /**
+   * Checks whether all bits are unset in this bitset.
+   */
+  inline bool none() const noexcept;
+
+  /**
    * Inverts all bits in this bitset.
    */
   bitset& flip() noexcept;

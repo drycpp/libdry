@@ -38,6 +38,14 @@ TEST_CASE("empty_bitset#count") {
   REQUIRE(empty_bitset{}.count(false) == 0);
 }
 
+TEST_CASE("empty_bitset#any") {
+  REQUIRE(empty_bitset{}.any() == false);
+}
+
+TEST_CASE("empty_bitset#none") {
+  REQUIRE(empty_bitset{}.none() == true);
+}
+
 TEST_CASE("empty_bitset#flip") {
   REQUIRE_NOTHROW(empty_bitset{}.flip());
 }
@@ -61,6 +69,18 @@ TEST_CASE("small_bitset#count") {
   REQUIRE(small_bitset{1}.count(false) == 1);
 }
 
+TEST_CASE("small_bitset#any") {
+  REQUIRE(small_bitset{}.any() == false);
+  REQUIRE(small_bitset{1}.any() == false);
+  //REQUIRE(small_bitset{1}.flip().any() == true);
+}
+
+TEST_CASE("small_bitset#none") {
+  REQUIRE(small_bitset{}.none() == true);
+  REQUIRE(small_bitset{1}.none() == true);
+  //REQUIRE(small_bitset{1}.flip().none() == false);
+}
+
 TEST_CASE("small_bitset#flip") {} /* not supported */
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -77,6 +97,18 @@ TEST_CASE("uniform_bitset#count") {
   REQUIRE(uniform_bitset{}.count(false) == 0);
   REQUIRE(uniform_bitset{1}.count(true) == 0);
   REQUIRE(uniform_bitset{1}.count(false) == 1);
+}
+
+TEST_CASE("uniform_bitset#any") {
+  REQUIRE(uniform_bitset{}.any() == false);
+  REQUIRE(uniform_bitset(1, false).any() == false);
+  REQUIRE(uniform_bitset(1, true).any() == true);
+}
+
+TEST_CASE("uniform_bitset#none") {
+  REQUIRE(uniform_bitset{}.none() == true);
+  REQUIRE(uniform_bitset(1, false).none() == true);
+  REQUIRE(uniform_bitset(1, true).none() == false);
 }
 
 TEST_CASE("uniform_bitset#flip") {
