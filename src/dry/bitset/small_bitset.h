@@ -140,6 +140,13 @@ public:
     if (pos >= size()) {
       throw std::out_of_range{"pos >= size()"};
     }
+    return operator[](pos);
+  }
+
+  /**
+   * @copydoc bitset::operator[]()
+   */
+  inline bool operator[](std::size_t pos) const noexcept {
     const auto begin = _data.begin() + 1;
     const auto end = begin + std::min(size(), N - 1);
     return size() && std::find(begin, end, pos) != end;

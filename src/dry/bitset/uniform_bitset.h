@@ -110,6 +110,13 @@ public:
   }
 
   /**
+   * @copydoc bitset::operator[]()
+   */
+  inline bool operator[](std::size_t pos) const noexcept {
+    return pos < size() ? _value : false;
+  }
+
+  /**
    * @copydoc bitset::flip()
    */
   uniform_bitset& flip() noexcept {
