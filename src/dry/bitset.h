@@ -80,6 +80,11 @@ public:
       "unimplemented static polymorphic method 'size' in derived class");
     return static_cast<const Derived&>(*this).size();
   }
+
+  /**
+   * Inverts all bits in this bitset.
+   */
+  bitset& flip() noexcept;
 };
 
 namespace dry {

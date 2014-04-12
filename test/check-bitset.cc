@@ -27,9 +27,17 @@ TEST_CASE("empty_bitset#size") {
   REQUIRE(empty_bitset{}.size() == 0);
 }
 
+TEST_CASE("empty_bitset#flip") {
+  REQUIRE_NOTHROW(empty_bitset{}.flip());
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 /* dry::uniform_bitset */
 
 TEST_CASE("uniform_bitset#size") {
   REQUIRE(uniform_bitset{}.size() == 0);
+}
+
+TEST_CASE("uniform_bitset#flip") {
+  REQUIRE_NOTHROW(uniform_bitset{}.flip());
 }

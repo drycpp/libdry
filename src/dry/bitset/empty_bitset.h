@@ -54,6 +54,13 @@ public:
   inline size_type size() const noexcept {
     return 0;
   }
+
+  /**
+   * @copydoc bitset::flip()
+   */
+  empty_bitset& flip() noexcept {
+    return *this;
+  }
 };
 
 #endif /* DRY_EMPTY_BITSET_H */

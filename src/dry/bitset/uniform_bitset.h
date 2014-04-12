@@ -63,6 +63,14 @@ public:
   inline size_type size() const noexcept {
     return _size;
   }
+
+  /**
+   * @copydoc bitset::flip()
+   */
+  uniform_bitset& flip() noexcept {
+    _value = !_value;
+    return *this;
+  }
 };
 
 #endif /* DRY_UNIFORM_BITSET_H */
