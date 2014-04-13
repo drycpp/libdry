@@ -10,6 +10,7 @@
 namespace dry {
   class semaphore;
   class binary_semaphore;
+  class counting_semaphore;
 }
 
 /**
@@ -59,6 +60,17 @@ public:
  * @see http://en.wikipedia.org/wiki/Semaphore_(programming)
  */
 class dry::binary_semaphore : public dry::semaphore {
+protected:
+  using semaphore::semaphore;
+};
+
+/**
+ * A counting semaphore.
+ *
+ * @abstract
+ * @see http://en.wikipedia.org/wiki/Semaphore_(programming)
+ */
+class dry::counting_semaphore : public dry::semaphore {
 protected:
   using semaphore::semaphore;
 };
