@@ -9,6 +9,7 @@
 
 namespace dry {
   class semaphore;
+  class binary_semaphore;
 }
 
 /**
@@ -49,6 +50,17 @@ public:
    * Move assignment operator.
    */
   semaphore& operator=(semaphore&& other) noexcept = default;
+};
+
+/**
+ * A binary semaphore.
+ *
+ * @abstract
+ * @see http://en.wikipedia.org/wiki/Semaphore_(programming)
+ */
+class dry::binary_semaphore : public dry::semaphore {
+protected:
+  using semaphore::semaphore;
 };
 
 #endif /* DRY_SEMAPHORE_H */
