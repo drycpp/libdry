@@ -53,6 +53,20 @@ public:
    * Move assignment operator.
    */
   atomic_binary_semaphore& operator=(atomic_binary_semaphore&& other) noexcept = delete;
+
+  /**
+   * ...
+   */
+  void wait() noexcept {
+    while (_state.test_and_set()) {} /* spin loop */
+  }
+
+  /**
+   * ...
+   */
+  void notify() noexcept {
+    _state.clear();
+  }
 };
 
 #endif /* DRY_ATOMIC_BINARY_SEMAPHORE_H */
