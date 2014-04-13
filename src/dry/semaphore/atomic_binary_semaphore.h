@@ -26,8 +26,22 @@ class dry::atomic_binary_semaphore final : public dry::binary_semaphore {
 public:
   /**
    * Default constructor.
+   *
+   * The initial state of the semaphore is locked.
    */
-  atomic_binary_semaphore() noexcept = default;
+  atomic_binary_semaphore() noexcept
+    : atomic_binary_semaphore{true} {}
+
+  /**
+   * Constructor.
+   *
+   * The initial state of the semaphore is locked or unlocked per `locked`.
+   *
+   * @param locked the initial state
+   */
+  atomic_binary_semaphore(bool locked) noexcept {
+    if (locked) _state.test_and_set();
+  }
 
   /**
    * Copy constructor.

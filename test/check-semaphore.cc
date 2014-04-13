@@ -21,7 +21,7 @@ TEST_CASE("atomic_binary_semaphore") {
 }
 
 TEST_CASE("atomic_binary_semaphore#wait") {
-  atomic_binary_semaphore sem; /* initially available, to not block on #wait() */
+  atomic_binary_semaphore sem{false}; /* don't block on #wait() */
   REQUIRE_NOTHROW(sem.wait());
 }
 
