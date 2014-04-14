@@ -139,7 +139,8 @@ public:
    * @copydoc bitset::set()
    */
   dense_bitset& set() noexcept {
-    // TODO
+    // FIXME: implement a special case for the last word.
+    std::fill(_words.begin(), _words.end(), static_cast<word_type>(-1));
     return *this;
   }
 
@@ -155,7 +156,7 @@ public:
    * @copydoc bitset::reset()
    */
   dense_bitset& reset() noexcept {
-    // TODO
+    std::fill(_words.begin(), _words.end(), static_cast<word_type>(0));
     return *this;
   }
 
