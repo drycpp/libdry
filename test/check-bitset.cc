@@ -33,6 +33,9 @@ using dense_bitset = dry::dense_bitset;
 
 TEST_CASE("dense_bitset#size") {
   REQUIRE(dense_bitset{}.size() == 0);
+  REQUIRE(dense_bitset{1}.size() == 1);
+  REQUIRE(dense_bitset{100}.size() == 100);
+  REQUIRE_NOTHROW(dense_bitset{1ULL<<33}.size());
 }
 
 ////////////////////////////////////////////////////////////////////////////////

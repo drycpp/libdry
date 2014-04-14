@@ -31,16 +31,17 @@ public:
   /**
    * Default constructor.
    */
-  dense_bitset() noexcept = default;
+  dense_bitset() = default;
 
   /**
-   * Constructor
+   * Constructor.
    *
    * @throws std::bad_alloc if out of memory.
    */
   dense_bitset(const std::size_t size,
                const bool default_value = false) {
     // TODO: resize(size, default_value);
+    _size = size;
   }
 
   /**
@@ -68,11 +69,19 @@ public:
    */
   dense_bitset& operator=(dense_bitset&& other) noexcept = default;
 
+  std::vector<word_type>& words() noexcept {
+    return _words;
+  }
+
+  const std::vector<word_type>& words() const noexcept {
+    return _words;
+  }
+
   /**
    * @copydoc bitset::size()
    */
   std::size_t size() const noexcept {
-    return 0; // TODO
+    return _size;
   }
 
   /**
