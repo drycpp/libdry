@@ -1,7 +1,7 @@
 pkgincludedir = $(includedir)/dry
 base_pkgincludedir = $(pkgincludedir)
 
-base_pkginclude_HEADERS =             \
+nobase_pkginclude_HEADERS =           \
   bitops.h                            \
   bitset.h                            \
   bitset/adaptive_bitset.h            \
