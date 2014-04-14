@@ -95,21 +95,29 @@ public:
    * @copydoc bitset::all()
    */
   bool all() const noexcept {
-    return false; // TODO
+    if (empty()) return false;
+    // FIXME: implement a special case for the last word.
+    return std::all_of(_words.begin(), _words.end(), [](const word_type word) {
+      return word == static_cast<word_type>(-1);
+    });
   }
 
   /**
    * @copydoc bitset::any()
    */
   bool any() const noexcept {
-    return false; // TODO
+    return std::any_of(_words.begin(), _words.end(), [](const word_type word) {
+      return word != 0;
+    });
   }
 
   /**
    * @copydoc bitset::none()
    */
   bool none() const noexcept {
-    return true; // TODO
+    return std::none_of(_words.begin(), _words.end(), [](const word_type word) {
+      return word != 0;
+    });
   }
 
   /**

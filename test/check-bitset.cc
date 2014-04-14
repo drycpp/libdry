@@ -38,6 +38,36 @@ TEST_CASE("dense_bitset#size") {
   REQUIRE_NOTHROW(dense_bitset{1ULL<<33}.size());
 }
 
+TEST_CASE("dense_bitset#all") {
+  REQUIRE(dense_bitset{}.all() == false);
+  REQUIRE(dense_bitset{1}.all() == false);
+#if 0
+  REQUIRE(dense_bitset{1}.set(0).all() == true);
+  REQUIRE(dense_bitset{2}.set(0).all() == false);
+  REQUIRE(dense_bitset{2}.set(1).all() == false);
+#endif
+}
+
+TEST_CASE("dense_bitset#any") {
+  REQUIRE(dense_bitset{}.any() == false);
+  REQUIRE(dense_bitset{1}.any() == false);
+#if 0
+  REQUIRE(dense_bitset{1}.set(0).any() == true);
+  REQUIRE(dense_bitset{2}.set(0).any() == true);
+  REQUIRE(dense_bitset{2}.set(1).any() == true);
+#endif
+}
+
+TEST_CASE("dense_bitset#none") {
+  REQUIRE(dense_bitset{}.none() == true);
+  REQUIRE(dense_bitset{1}.none() == true);
+#if 0
+  REQUIRE(dense_bitset{1}.set(0).none() == false);
+  REQUIRE(dense_bitset{2}.set(0).none() == false);
+  REQUIRE(dense_bitset{2}.set(1).none() == false);
+#endif
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 /* dry::empty_bitset */
 
