@@ -40,8 +40,7 @@ public:
    */
   dense_bitset(const std::size_t size,
                const bool default_value = false) {
-    // TODO: resize(size, default_value);
-    _size = size;
+    resize(size, default_value);
   }
 
   /**
@@ -137,6 +136,20 @@ public:
     assert(pos < size());
     const auto& word = _words[pos / word_size];
     return word & (1UL << (pos & (word_size - 1UL)));
+  }
+
+  /**
+   * @throws std::bad_alloc if out of memory
+   */
+  dense_bitset& resize(const std::size_t new_size,
+                       const bool default_value = false) {
+    const auto old_size = _size;
+    _size = new_size;
+    _words.resize((new_size + word_size - 1) / word_size);
+    if (default_value && new_size > old_size) {
+      // TODO: set_n(old_size, new_size - old_size, default_value);
+    }
+    return *this;
   }
 
   /**
