@@ -173,9 +173,15 @@ public:
   /**
    * @copydoc bitset::set(std::size_t,bool)
    */
-  dense_bitset& set(std::size_t pos, bool value = true) {
-    throw std::out_of_range{"pos >= size()"}; // TODO
-    return (void)pos, (void)value, *this;
+  dense_bitset& set(const std::size_t pos,
+                    const bool value = true) {
+    if (pos >= size()) {
+      throw std::out_of_range{"pos >= size()"};
+    }
+    auto& word = _words[pos / word_size];
+    const word_type mask = 1UL << (pos & (word_size - 1UL));
+    value ? word |= mask : word &= ~mask;
+    return *this;
   }
 
   /**
@@ -190,7 +196,6 @@ public:
    * @copydoc bitset::reset(std::size_t)
    */
   dense_bitset& reset(std::size_t pos) {
-    //assert(pos < size());
     return set(pos, false);
   }
 
