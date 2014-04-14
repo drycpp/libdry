@@ -124,15 +124,19 @@ public:
    * @copydoc bitset::test()
    */
   bool test(std::size_t pos) const {
-    throw std::out_of_range{"pos >= size()"}; // TODO
-    return (void)pos, false;
+    if (pos >= size()) {
+      throw std::out_of_range{"pos >= size()"};
+    }
+    return operator[](pos);
   }
 
   /**
    * @copydoc bitset::operator[]()
    */
   bool operator[](std::size_t pos) const noexcept {
-    return (void)pos, false; // TODO
+    assert(pos < size());
+    const auto& word = _words[pos / word_size];
+    return word & (1UL << (pos & (word_size - 1UL)));
   }
 
   /**
@@ -173,6 +177,7 @@ public:
    * @copydoc bitset::reset(std::size_t)
    */
   dense_bitset& reset(std::size_t pos) {
+    //assert(pos < size());
     return set(pos, false);
   }
 
