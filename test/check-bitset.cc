@@ -8,6 +8,7 @@
 
 #include <dry/bitset.h>
 #include <dry/bitset/adaptive_bitset.h>
+#include <dry/bitset/dense_bitset.h>
 #include <dry/bitset/empty_bitset.h>
 #include <dry/bitset/small_bitset.h>
 #include <dry/bitset/uniform_bitset.h>
@@ -23,6 +24,15 @@ TEST_CASE("bitset::npos") {
 
 TEST_CASE("bitset::word_size") {
   REQUIRE(bitset::word_size > 0);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/* dry::dense_bitset */
+
+using dense_bitset = dry::dense_bitset;
+
+TEST_CASE("dense_bitset#size") {
+  REQUIRE(dense_bitset{}.size() == 0);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

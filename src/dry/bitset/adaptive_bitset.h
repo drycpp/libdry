@@ -9,6 +9,7 @@
 
 #include "../bitset.h"
 #include "empty_bitset.h"
+#include "dense_bitset.h"
 #include "small_bitset.h"
 #include "uniform_bitset.h"
 
@@ -211,9 +212,12 @@ private:
     }
   };
 
-  struct empty_implementation final : public implementation<empty_bitset> {
-    //using implementation<empty_bitset>::implementation;
+  struct dense_implementation final : public implementation<dense_bitset> {
+    dense_implementation(std::size_t size) noexcept
+      : implementation<dense_bitset>{size} {}
   };
+
+  struct empty_implementation final : public implementation<empty_bitset> {};
 
   struct small_implementation final : public implementation<small_bitset<>> {
     small_implementation(std::size_t size) noexcept

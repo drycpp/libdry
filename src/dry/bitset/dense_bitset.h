@@ -1,0 +1,161 @@
+/* This is free and unencumbered software released into the public domain. */
+
+#ifndef DRY_DENSE_BITSET_H
+#define DRY_DENSE_BITSET_H
+
+/**
+ * @file
+ */
+
+#include "../bitset.h"
+
+#include <algorithm>  /* for std::*() */
+#include <functional> /* for std::function */
+#include <vector>     /* for std::vector */
+
+namespace dry {
+  class dense_bitset;
+}
+
+/**
+ * A dense bitset.
+ *
+ * Dense bitsets require storage proportional to the total range of bits
+ * they represent.
+ */
+class dry::dense_bitset : public dry::bitset<dense_bitset, std::uint64_t> {
+  std::size_t _size {0};           /* size in bits */
+  std::vector<word_type> _words;   /* array of words */
+
+public:
+  /**
+   * Default constructor.
+   */
+  dense_bitset() noexcept = default;
+
+  /**
+   * Constructor
+   *
+   * @throws std::bad_alloc if out of memory.
+   */
+  dense_bitset(const std::size_t size,
+               const bool default_value = false) {
+    // TODO: resize(size, default_value);
+  }
+
+  /**
+   * Copy constructor.
+   */
+  dense_bitset(const dense_bitset& other) = default;
+
+  /**
+   * Move constructor.
+   */
+  dense_bitset(dense_bitset&& other) noexcept = default;
+
+  /**
+   * Destructor.
+   */
+  ~dense_bitset() noexcept = default;
+
+  /**
+   * Copy assignment operator.
+   */
+  dense_bitset& operator=(const dense_bitset& other) = default;
+
+  /**
+   * Move assignment operator.
+   */
+  dense_bitset& operator=(dense_bitset&& other) noexcept = default;
+
+  /**
+   * @copydoc bitset::size()
+   */
+  std::size_t size() const noexcept {
+    return 0; // TODO
+  }
+
+  /**
+   * @copydoc bitset::count()
+   */
+  std::size_t count(bool value = true) const noexcept {
+    return (void)value, 0; // TODO
+  }
+
+  /**
+   * @copydoc bitset::all()
+   */
+  bool all() const noexcept {
+    return false; // TODO
+  }
+
+  /**
+   * @copydoc bitset::any()
+   */
+  bool any() const noexcept {
+    return false; // TODO
+  }
+
+  /**
+   * @copydoc bitset::none()
+   */
+  bool none() const noexcept {
+    return true; // TODO
+  }
+
+  /**
+   * @copydoc bitset::test()
+   */
+  bool test(std::size_t pos) const {
+    throw std::out_of_range{"pos >= size()"}; // TODO
+    return (void)pos, false;
+  }
+
+  /**
+   * @copydoc bitset::operator[]()
+   */
+  bool operator[](std::size_t pos) const noexcept {
+    return (void)pos, false; // TODO
+  }
+
+  /**
+   * @copydoc bitset::set()
+   */
+  dense_bitset& set() noexcept {
+    // TODO
+    return *this;
+  }
+
+  /**
+   * @copydoc bitset::set(std::size_t,bool)
+   */
+  dense_bitset& set(std::size_t pos, bool value = true) {
+    throw std::out_of_range{"pos >= size()"}; // TODO
+    return (void)pos, (void)value, *this;
+  }
+
+  /**
+   * @copydoc bitset::reset()
+   */
+  dense_bitset& reset() noexcept {
+    // TODO
+    return *this;
+  }
+
+  /**
+   * @copydoc bitset::reset(std::size_t)
+   */
+  dense_bitset& reset(std::size_t pos) {
+    return set(pos, false);
+  }
+
+  /**
+   * @copydoc bitset::flip()
+   */
+  dense_bitset& flip() noexcept {
+    // TODO
+    return *this;
+  }
+};
+
+#endif /* DRY_DENSE_BITSET_H */
