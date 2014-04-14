@@ -117,6 +117,15 @@ public:
   }
 
   /**
+   * @copydoc bitset::clear()
+   */
+  uniform_bitset& clear() noexcept {
+    _size  = 0;
+    _value = false;
+    return *this;
+  }
+
+  /**
    * @copydoc bitset::set()
    */
   uniform_bitset& set() noexcept {

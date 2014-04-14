@@ -136,6 +136,15 @@ public:
   }
 
   /**
+   * @copydoc bitset::clear()
+   */
+  dense_bitset& clear() noexcept {
+    _size = 0;
+    _words.clear();
+    return *this;
+  }
+
+  /**
    * @copydoc bitset::set()
    */
   dense_bitset& set() noexcept {

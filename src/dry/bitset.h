@@ -113,6 +113,11 @@ public:
   bool operator[](size_type pos) const;
 
   /**
+   * ...
+   */
+  bitset& clear() noexcept;
+
+  /**
    * Sets all bits in this bitset.
    */
   bitset& set();

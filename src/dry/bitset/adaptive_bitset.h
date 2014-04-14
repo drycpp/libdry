@@ -121,6 +121,13 @@ public:
   }
 
   /**
+   * @copydoc bitset::clear()
+   */
+  adaptive_bitset& clear() noexcept {
+    return _impl->clear(), *this;
+  }
+
+  /**
    * @copydoc bitset::set()
    */
   adaptive_bitset& set() noexcept {
@@ -165,6 +172,7 @@ private:
     virtual bool none() const noexcept = 0;
     virtual bool test(std::size_t pos) const = 0;
     virtual bool operator[](std::size_t pos) const noexcept = 0;
+    virtual void clear() noexcept = 0;
     virtual void set() noexcept = 0;
     virtual void set(std::size_t pos, bool value = true) = 0;
     virtual void reset() noexcept = 0;
@@ -197,6 +205,9 @@ private:
     }
     virtual bool operator[](std::size_t pos) const noexcept override {
       return self.operator[](pos);
+    }
+    virtual void clear() noexcept override {
+      self.clear();
     }
     virtual void set() noexcept override {
       self.set();

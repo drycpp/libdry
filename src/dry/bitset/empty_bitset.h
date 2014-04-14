@@ -99,6 +99,14 @@ public:
   }
 
   /**
+   * @copydoc bitset::clear()
+   */
+  empty_bitset& clear() noexcept {
+    /* nothing to do */
+    return *this;
+  }
+
+  /**
    * @copydoc bitset::set()
    */
   empty_bitset& set() noexcept {

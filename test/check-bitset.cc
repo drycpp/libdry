@@ -68,6 +68,32 @@ TEST_CASE("dense_bitset#none") {
 #endif
 }
 
+TEST_CASE("dense_bitset#clear") {
+  REQUIRE_NOTHROW(dense_bitset{}.clear());
+  // TODO
+}
+
+TEST_CASE("dense_bitset#set") {
+  for (auto size = 0U; size < 16; size++) {
+    dense_bitset bits{size};
+    bits.set();
+    for (auto pos = 0U; pos < size; pos++) {
+      REQUIRE(bits.test(pos) == true);
+    }
+  }
+}
+
+TEST_CASE("dense_bitset#reset") {
+  for (auto size = 0U; size < 16; size++) {
+    dense_bitset bits{size};
+    bits.set().reset();
+    for (auto pos = 0U; pos < size; pos++) {
+      REQUIRE(bits.test(pos) == false);
+    }
+  }
+  REQUIRE_NOTHROW(dense_bitset{16}.reset());
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 /* dry::empty_bitset */
 
@@ -96,6 +122,11 @@ TEST_CASE("empty_bitset#none") {
 
 TEST_CASE("empty_bitset#test") {
   REQUIRE_THROWS_AS(empty_bitset{}.test(0), std::out_of_range);
+}
+
+TEST_CASE("empty_bitset#clear") {
+  REQUIRE_NOTHROW(empty_bitset{}.clear());
+  // TODO
 }
 
 TEST_CASE("empty_bitset#set") {
@@ -167,6 +198,11 @@ TEST_CASE("small_bitset#test") {
   REQUIRE(small_bitset{1}.set(0).test(0) == true);
   REQUIRE(small_bitset{2}.set(0).test(0) == true);
   REQUIRE(small_bitset{2}.set(1).test(1) == true);
+}
+
+TEST_CASE("small_bitset#clear") {
+  REQUIRE_NOTHROW(small_bitset{}.clear());
+  // TODO
 }
 
 TEST_CASE("small_bitset#set") {
@@ -245,6 +281,11 @@ TEST_CASE("uniform_bitset#test") {
   REQUIRE(uniform_bitset(1, true).test(0) == true);
 }
 
+TEST_CASE("uniform_bitset#clear") {
+  REQUIRE_NOTHROW(uniform_bitset{}.clear());
+  // TODO
+}
+
 TEST_CASE("uniform_bitset#set") {
   REQUIRE(uniform_bitset{}.set().value() == true);
 }
@@ -320,6 +361,11 @@ TEST_CASE("adaptive_bitset#test") {
   REQUIRE(adaptive_bitset{1}.set(0).test(0) == true);
   REQUIRE(adaptive_bitset{2}.set(0).test(0) == true);
   REQUIRE(adaptive_bitset{2}.set(1).test(1) == true);
+}
+
+TEST_CASE("adaptive_bitset#clear") {
+  REQUIRE_NOTHROW(adaptive_bitset{}.clear());
+  // TODO
 }
 
 TEST_CASE("adaptive_bitset#set") {

@@ -153,6 +153,15 @@ public:
   }
 
   /**
+   * @copydoc bitset::clear()
+   */
+  small_bitset& clear() {
+    _data[0] = 0;
+    std::fill_n(_data.begin() + 1, N - 1, npos);
+    return *this;
+  }
+
+  /**
    * @copydoc bitset::set()
    */
   small_bitset& set() {
