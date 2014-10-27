@@ -1,6 +1,10 @@
 libdry++
 ========
 
+.. image:: https://api.travis-ci.org/dryproject/libdry.svg?branch=master
+   :target: https://travis-ci.org/dryproject/libdry
+   :alt: Travis CI build status
+
 Installation
 ------------
 
