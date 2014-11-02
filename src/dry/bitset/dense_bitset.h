@@ -66,7 +66,7 @@ public:
   /**
    * Move assignment operator.
    */
-  dense_bitset& operator=(dense_bitset&& other) noexcept = default;
+  dense_bitset& operator=(dense_bitset&& other) = default;
 
   std::vector<word_type>& words() noexcept {
     return _words;
