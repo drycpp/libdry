@@ -21,7 +21,7 @@ branches:
 # https://scan.coverity.com/projects/3281
 env:
   global:
-  - secure: "McrSBXOUXAwiH4014Y9tbJb3pCrsZeD9J0J8NTFnZSpZvm04Sj97YamQpm29Tzcg0pi+u+49cDQpT0++TPCWvcjXlKwSGYUTYbEefBN8gxqusLb8YRhfAVyOrehWJRWsucLI6Bg4XL3IlgC8R92L9o8m5/lXbEY8TJ7uQXLkBjQ=" # COVERITY_SCAN_TOKEN
+  - secure: "dORyAvPHmnAwVdA4f7JA2WkMOxNAflY5Fi4qHL/9wpWlo5bmj547IY33srcIqAlPI0iGAMOTPXLIVjDJk8qEkWS4ecX2WFYgxIBPVSlNbcTsGi3R1Z6pCAzP+2fVFcuR+a3NLp/FLS28LEHWnYG93m0SRnhcDCtM7pX4fQj60CY="
 addons:
   coverity_scan:
     project:
