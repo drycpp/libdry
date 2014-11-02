@@ -182,8 +182,8 @@ private:
   template <class Bitset>
   struct implementation : public interface {
     Bitset self;
-    implementation() noexcept = default;
-    implementation(std::size_t size) noexcept : self{size} {}
+    implementation() = default;
+    implementation(std::size_t size) : self{size} {}
     virtual ~implementation() noexcept override = default;
     virtual std::size_t size() const noexcept override {
       return self.size();
