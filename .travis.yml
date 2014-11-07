@@ -27,5 +27,5 @@ addons:
       name: dryproject/libdry
     notification_email: arto@bendiken.net
     build_command_prepend: cov-configure --comptype gcc --compiler $CC && ./configure
-    build_command: make
+    build_command: make && make check
     branch_pattern: coverity
