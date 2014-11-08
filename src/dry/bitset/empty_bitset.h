@@ -59,7 +59,8 @@ public:
    * @copydoc bitset::count()
    */
   std::size_t count(bool value = true) const noexcept {
-    return (void)value, 0;
+    static_cast<void>(value);
+    return 0;
   }
 
   /**
@@ -87,15 +88,16 @@ public:
    * @copydoc bitset::test()
    */
   bool test(std::size_t pos) const {
+    static_cast<void>(pos);
     throw std::out_of_range{"pos >= size()"};
-    return (void)pos, false;
   }
 
   /**
    * @copydoc bitset::operator[]()
    */
   bool operator[](std::size_t pos) const noexcept {
-    return (void)pos, false;
+    static_cast<void>(pos);
+    return false;
   }
 
   /**
@@ -118,8 +120,9 @@ public:
    * @copydoc bitset::set(std::size_t,bool)
    */
   empty_bitset& set(std::size_t pos, bool value = true) {
+    static_cast<void>(pos);
+    static_cast<void>(value);
     throw std::out_of_range{"pos >= size()"};
-    return (void)pos, (void)value, *this;
   }
 
   /**
